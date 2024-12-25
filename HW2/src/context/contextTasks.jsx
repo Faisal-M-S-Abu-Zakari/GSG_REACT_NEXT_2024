@@ -22,7 +22,8 @@ const TasksProvider = ({ children }) => {
     const toggleTaskCompletion = (index) => {
         setTasks((prevTasks) =>
             prevTasks.map((t, i) =>
-                i === index ? { ...tasks, completed: !t.completed } : tasks
+                i === index ? { ...t, completed: !t.completed } : t
+
             )
         );
     };

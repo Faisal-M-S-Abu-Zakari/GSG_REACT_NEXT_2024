@@ -1,15 +1,29 @@
-import React from 'react'
-import TotalData from './TotalData'
+import React, { useContext } from "react";
+import { TasksContext } from "../context/contextTasks";
 
 const TotalDataList = () => {
-  return (
-    <div className="total-data-list">
-      <TotalData />
-      <TotalData />
-      <TotalData />
-    </div>
-  );
+    const { tasks } = useContext(TasksContext);
+
+    const totalTasks = tasks.length;
+    const completedTasks = tasks.filter((t) => t.completed).length;
+    const urgentTasks = tasks.filter((t) => t.isUrgent).length;
+
+    return (
+        <div className="total-data-list">
+            <div className="total-data">
+                <h3>{totalTasks}</h3>
+                <h1>Created Tasks</h1>
+            </div>
+            <div className="total-data">
+                <h3>{completedTasks}</h3>
+                <h1>Completed Tasks</h1>
+            </div>
+            <div className="total-data">
+                <h3>{urgentTasks}</h3>
+                <h1>Urgent Tasks</h1>
+            </div>
+        </div>
+    );
 };
 
-
-export default TotalDataList
+export default TotalDataList;

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Task = () => {
+const Task = ({task}) => {
   return (
     <div className="task-container">
       <input type="checkbox" className="task-check" />
-      <span className="task-text">Sample Task</span>
+      <span className="task-text">{task}</span>
       <button className="task-trash">🗑️</button>
     </div>
   );

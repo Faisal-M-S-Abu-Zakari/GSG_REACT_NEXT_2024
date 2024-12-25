@@ -5,8 +5,8 @@ const TotalDataList = () => {
     const { tasks } = useContext(TasksContext);
 
     const totalTasks = tasks.length;
-    const completedTasks = tasks.filter((t) => t.completed).length;
-    const urgentTasks = tasks.filter((t) => t.isUrgent).length;
+    const completedTasks = tasks.filter((task) => task.completed).length;
+    const urgentTasks = tasks.filter((task) => task.isUrgent).length;
 
     return (
         <div className="total-data-list">

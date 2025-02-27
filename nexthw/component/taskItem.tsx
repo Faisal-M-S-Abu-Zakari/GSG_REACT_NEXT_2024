@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import complete from "../public/complete.jpg";
 import Pending from "../public/pending.jpg";
+import ButtonComponent from "./ButtonComponent";
+
 interface IProps {
   task: todos.ITodo;
 }
@@ -24,7 +26,7 @@ const TaskItem = ({ task }: IProps) => {
       >
         Status :{task.completed ? "✅ Completed" : "🕛 Pending"}
       </p>
-      <div className="relative w-60 h-50">
+      <div className="relative w-60 h-48">
         <Image
           src={task.completed ? complete : Pending}
           alt={task.completed ? "Completed Task" : "Pending Task"}
@@ -33,6 +35,7 @@ const TaskItem = ({ task }: IProps) => {
           className="rounded-md"
         />
       </div>
+      <ButtonComponent id={task.id} />
     </div>
   );
 };

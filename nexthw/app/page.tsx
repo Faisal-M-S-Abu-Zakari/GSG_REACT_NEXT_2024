@@ -11,7 +11,7 @@ export default async function Home() {
         Task Tracker 📝
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
-        {data.slice(0, 5).map((task) => (
+        {data.slice(185, 190).map((task) => (
           <TaskItem task={task} key={task.id} />
         ))}
       </div>

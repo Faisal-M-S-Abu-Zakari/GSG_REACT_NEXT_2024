@@ -3,12 +3,14 @@ import complete from "../../../public/complete.jpg";
 import Pending from "../../../public/pending.jpg";
 import Image from "next/image";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 const API_URL = "https://jsonplaceholder.typicode.com/todos";
 interface IProps {
-  params: Promise<{ id: string }>;
+  params: Promise<{ id: number }>;
 }
 const page = async ({ params }: IProps) => {
   const { id } = await params;
+  if (id > 200) return notFound();
   const res = await fetch(`${API_URL}/${id}`);
   const data = (await res.json()) as todos.ITodo;
   return (

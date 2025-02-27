@@ -12,6 +12,9 @@ const page = async ({ params }: IProps) => {
   const { id } = await params;
   if (id > 200) return notFound();
   const res = await fetch(`${API_URL}/${id}`);
+  if (!res.ok) {
+    throw new Error("Failed to fetch task details");
+  }
   const data = (await res.json()) as todos.ITodo;
   return (
     <div className="min-h-screen bg-gray-100 p-8">

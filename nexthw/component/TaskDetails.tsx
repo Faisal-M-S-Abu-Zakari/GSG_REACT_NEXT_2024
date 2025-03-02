@@ -1,13 +1,14 @@
 import React from "react";
-import { priorityStyles } from "@/services/todo.services";
+import { fetchData, priorityStyles } from "@/services/todo.services";
 import complete from "../public/complete.jpg";
 import Pending from "../public/pending.jpg";
 import Image from "next/image";
 interface IProps {
-  dataWithProirity: todos.ITodo;
+  id: number;
 }
 
-const TaskDetails = async ({ dataWithProirity }: IProps) => {
+const TaskDetails = async ({ id }: IProps) => {
+  const { dataWithProirity } = await fetchData(id);
   return (
     <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-8 transform transition-transform hover:scale-105">
       <h1 className="text-3xl font-semibold text-gray-900 mb-6">

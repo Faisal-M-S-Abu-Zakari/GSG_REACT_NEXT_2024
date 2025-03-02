@@ -1,5 +1,5 @@
 import React from "react";
-import TaskItem from "./../component/taskItem";
+import TaskCard from "../component/taskCard";
 const API_URL = "https://jsonplaceholder.typicode.com/todos";
 export default async function Home() {
   const res = await fetch(API_URL);
@@ -12,7 +12,7 @@ export default async function Home() {
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
         {data.slice(185, 190).map((task) => (
-          <TaskItem task={task} key={task.id} />
+          <TaskCard task={task} key={task.id} />
         ))}
       </div>
     </div>

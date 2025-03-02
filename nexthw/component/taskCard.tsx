@@ -9,7 +9,7 @@ interface IProps {
   task: todos.ITodo;
 }
 
-const TaskItem = ({ task }: IProps) => {
+const TaskCard = ({ task }: IProps) => {
   return (
     <div className="bg-white rounded-lg shadow-lg p-6 w-full max-w-xs mx-auto transition-transform hover:scale-105 transform hover:shadow-xl">
       <h2 className="text-xl font-semibold text-gray-800 mb-3 truncate">
@@ -47,4 +47,4 @@ const TaskItem = ({ task }: IProps) => {
   );
 };
 
-export default TaskItem; // Fix: Correct export
+export default TaskCard; // Fix: Correct export

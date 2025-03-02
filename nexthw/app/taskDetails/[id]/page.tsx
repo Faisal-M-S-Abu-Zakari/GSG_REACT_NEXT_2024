@@ -4,32 +4,16 @@ import Pending from "../../../public/pending.jpg";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-const API_URL = "https://jsonplaceholder.typicode.com/todos";
+import { fetchData, priorityStyles } from "@/services/todo.services";
+
 interface IProps {
   params: Promise<{ id: number }>;
 }
-const getPriority = (id: number): "High" | "Medium" | "Low" => {
-  if (id % 3 === 0) return "High";
-  if (id % 3 === 1) return "Medium";
-  return "Low";
-};
+
 const page = async ({ params }: IProps) => {
   const { id } = await params;
   if (id > 200) return notFound();
-  const res = await fetch(`${API_URL}/${id}`);
-  if (!res.ok) {
-    throw new Error("Failed to fetch task details");
-  }
-  const data = (await res.json()) as todos.ITodo;
-  const dataWithProirity: todos.ITodo = {
-    ...data,
-    priority: getPriority(data.id),
-  };
-  const priorityStyles = {
-    High: "bg-red-100 text-red-600 border-red-500",
-    Medium: "bg-yellow-100 text-yellow-600 border-yellow-500",
-    Low: "bg-green-100 text-green-600 border-green-500",
-  };
+  const { dataWithProirity } = await fetchData(id);
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <Link
@@ -59,7 +43,7 @@ const page = async ({ params }: IProps) => {
         </p>
         <p
           className={`py-1 mb-6 px-4 rounded-full text-sm font-medium w-fit border ${
-            priorityStyles[data.priority]
+            priorityStyles[dataWithProirity.priority]
           }`}
         >
           Priority: {dataWithProirity.priority}

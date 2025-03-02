@@ -4,5 +4,6 @@ declare namespace todos {
     id: number;
     title: string;
     completed: boolean;
+    priority: "High" | "Medium" | "Low"; // Added priority field
   }
 }
